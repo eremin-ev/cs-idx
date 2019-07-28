@@ -1,0 +1,311 @@
+\documentclass{article}
+
+\begin{document}
+
+\title{CS index}
+\author{e.v.eremin}
+
+\maketitle
+
+\begin{abstract}
+Computer science topics index.
+\end{abstract}
+
+\section{Introduction}
+
+What should be known.
+
+\section{Hardware}
+
+\subsection{Central Processing Unit (CPU)}
+
+\subsection{Instruction Execution}
+
+\subsection{Stack}
+
+\begin{itemize}
+\item Stack pointer
+\item Frame pointer
+\item Subroutine/Subprogram
+\item Return Address
+\end{itemize}
+
+\subsubsection{Stack pointer}
+
+\subsubsection{Frame pointer}
+
+\section{Multiprocessing}
+
+\subsection{TLS}
+
+\subsection{Subprograms/Routines/Functions}
+
+\begin{itemize}
+\item Static
+\item Thread-safe
+\item Re-entrant
+\end{itemize}
+
+\section{Locking}
+
+\begin{itemize}
+\item futex
+\item mutex
+\item spinlock
+\item rwlock (Reader/Writer Lock)
+\item RCU
+\end{itemize}
+
+\subsection{RCU (Read, Copy, Update)}
+
+RCU --- Read, Copy, Update.
+
+Paul McKenney series on LWN.net:
+
+\begin{enumerate}
+
+\item What is RCU, Fundamentally?
+
+	\texttt{https://lwn.net/Articles/262464/}
+
+\item What is RCU? Part 2: Usage
+
+	\texttt{https://lwn.net/Articles/263130/}
+
+\item RCU part 3: the RCU API
+
+	\texttt{https://lwn.net/Articles/264090/}
+
+\item The RCU API, 2019 edition
+
+	\texttt{https://lwn.net/Articles/777036/}
+
+\end{enumerate}
+
+\section{Tracing}
+
+\begin{enumerate}
+\item Dynamic Tracing
+\item ftrace
+\begin{verbatim}
+mount -t tracefs tracefs /sys/kernel/tracing
+\end{verbatim}
+\item KProbes
+\item Perf
+\end{enumerate}
+
+\section{Virtualization}
+
+\subsection{Namespaces}
+
+\begin{enumerate}
+
+\item Separation Anxiety: A Tutorial for Isolating Your System with Linux Namespaces
+
+	\texttt{https://www.toptal.com/linux/separation-anxiety-isolating-your-system-with-linux-namespaces}
+
+\end{enumerate}
+
+\subsection{lxc}
+
+\subsection{lxd}
+
+\subsection{Docker}
+
+\section{Memory Management}
+
+\subsection{Segments}
+
+\subsection{Paging}
+
+\subsection{Page-replacement algorithm}
+
+\begin{enumerate}
+
+\item Least Recently Used (LRU)
+
+\end{enumerate}
+
+\subsection{References}
+
+\begin{enumerate}
+
+\item CSE 240A: Graduate Computer Architecture
+
+	\begin{enumerate}
+
+	\item Cache (CSE240A-MBT-L15-Cache.ppt.pdf)
+
+	\texttt{https://cseweb.ucsd.edu/classes/fa10/cse240a/pdf/08/}
+
+	\item Virtual Memory (CSE240A-MBT-L18-VirtualMemory.ppt.pdf)
+
+	\texttt{https://cseweb.ucsd.edu/classes/fa10/cse240a/pdf/08/}
+
+	\end{enumerate}
+
+\end{enumerate}
+
+\section{Command Line Interface (CLI)}
+
+\section{Readline}
+
+\begin{verbatim}
+	inputrc
+\end{verbatim}
+
+\section{Vim}
+
+\begin{verbatim}
+	.vimrc
+\end{verbatim}
+
+\section{Bash}
+
+\begin{verbatim}
+	bashrc
+	bash_profile
+	profile
+\end{verbatim}
+
+\subsection{bashrc}
+
+History.
+
+\begin{verbatim}
+HISTCONTROL=ignoreboth
+HISTSIZE=100000
+HISTFILESIZE=2000000
+\end{verbatim}
+
+Vim as the default editor.
+
+\begin{verbatim}
+export EDITOR=vim
+\end{verbatim}
+
+\begin{verbatim}
+export MANWIDTH=80
+\end{verbatim}
+
+Git shortcuts.
+
+\begin{verbatim}
+alias gil='git log --stat'
+alias gig='git grep'
+alias gis='git status'
+alias gid='git diff'
+alias gib='git branch'
+alias gia='git add'
+alias gic='git commit -v'
+alias gif='git log --graph --format="%C(auto)%h %ad %cd %d %ae %s"'
+\end{verbatim}
+
+Make \texttt{rm} (remove), \texttt{mv} (move) and \texttt{cp} (copy) commands less dangerous.
+
+\begin{verbatim}
+alias rm='rm -i'
+alias mv='mv -i'
+alias cp='cp -i'
+\end{verbatim}
+
+\section{Git}
+
+\begin{verbatim}
+# color.decorate.tag
+[color "decorate"]
+	tag = magenta
+\end{verbatim}
+
+\section{Tmux}
+
+\begin{verbatim}
+	tmux.conf
+\end{verbatim}
+
+\section{Screen}
+
+\begin{verbatim}
+	screenrc
+\end{verbatim}
+
+
+
+\section{Bash}
+
+Configuration files:
+
+\begin{verbatim}
+${HOME}/.bashrc
+${HOME}/.bash_profile
+${HOME}/.profile
+/etc/bashrc
+/etc/profile
+\end{verbatim}
+
+\subsection{Readline}
+
+\begin{verbatim}
+inputrc
+\end{verbatim}
+
+\subsection{Vim}
+
+\begin{verbatim}
+.vimrc
+\end{verbatim}
+
+Fix random syntax highlighting breaks
+
+\begin{verbatim}
+:syntax sync fromstart
+:syntax sync minlines=20
+\end{verbatim}
+
+\subsection{Git}
+
+\begin{verbatim}
+# color.decorate.tag
+[color "decorate"]
+	tag = magenta
+
+[user]
+	name = E.V.Eremin
+	email = e.vl.eremin@yandex.ru
+	username = eremin
+\end{verbatim}
+
+\subsubsection{Github (or similar)}
+
+Generating an SSH key
+
+\begin{verbatim}
+$ ssh-keygen -t rsa -b 4096 -C 'e.vl.eremin@yandex.ru'
+$ xclip -sel clip < ~/.ssh/id_rsa.pub
+$ git remote add origin 'git@github.com:eremin-ev/cs-idx.git'
+\end{verbatim}
+
+\subsection{Tmux}
+
+\begin{verbatim}
+	tmux.conf
+\end{verbatim}
+
+\subsection{Screen}
+
+\begin{verbatim}
+	screenrc
+\end{verbatim}
+
+\begin{equation}
+    \label{simple_equation}
+    \alpha = \sqrt{\beta}
+\end{equation}
+
+\section{Conclusion}
+
+Write your conclusion here.
+
+\end{document}
+
+% vim:spell:
