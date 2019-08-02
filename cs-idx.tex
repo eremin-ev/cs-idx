@@ -118,6 +118,37 @@ mount -t tracefs tracefs /sys/kernel/tracing
 
 \subsection{Paging}
 
+\begin{itemize}
+\item PGD (Page Global Directory)
+\item PUD (Page Upper Directory)
+\item PMD (Page Middle (Mid-level) Directory)
+\item PTE (Page Table Entry)
+\item Page
+\end{itemize}
+
+\begin{itemize}
+\item PAE (Physical Address Extension)
+\item Page Frame.  Physical memory is organized into \emph{page frames}.  The 
+size of a page frame is a power of 2 in bytes and varies among systems.
+\item Page.  Logical memory is organized into \emph{pages}. The size of page 
+matches a page frame.
+\item PFN (Page Frame Number).  A PFN is simply an index within physical memory 
+that is counted in page-sized units. PFN for a physical address could be 
+trivially defined as (\verb"page_phys_addr >> PAGE_SHIFT").
+\end{itemize}
+
+\textbf{References}
+
+\begin{enumerate}
+\item Four-level page tables merged [Posted January 5, 2005 by corbet]
+
+	\texttt{https://lwn.net/Articles/117749/}
+
+\item Mel Gorman (mel at skynet dot ie).  Understanding the Linux Virtual Memory Manager
+
+	\texttt{https://www.kernel.org/doc/gorman/}
+\end{enumerate}
+
 \subsection{Page-replacement algorithm}
 
 \begin{enumerate}
