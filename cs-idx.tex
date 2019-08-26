@@ -179,29 +179,30 @@ trivially defined as (\verb"page_phys_addr >> PAGE_SHIFT").
 
 \section{Command Line Interface (CLI)}
 
-\section{Readline}
+\subsection{Vim}
+
+Configuration files:
 
 \begin{verbatim}
-	inputrc
+.vimrc
 \end{verbatim}
 
-\section{Vim}
+\subsection{Bash}
+
+Configuration files:
 
 \begin{verbatim}
-	.vimrc
-\end{verbatim}
-
-\section{Bash}
-
-\begin{verbatim}
-	bashrc
-	bash_profile
-	profile
+${HOME}/.bashrc
+${HOME}/.bash_profile
+${HOME}/.profile
+/etc/bashrc
+/etc/profile
 \end{verbatim}
 
 \subsection{bashrc}
 
-History.
+Ignore duplicated commands and those which begin with a space (\verb"ignoreboth"
+= \verb"gnorespace", \verb"ignoredups"), save more history.
 
 \begin{verbatim}
 HISTCONTROL=ignoreboth
@@ -209,11 +210,13 @@ HISTSIZE=100000
 HISTFILESIZE=2000000
 \end{verbatim}
 
-Vim as the default editor.
+Set Vim as the default editor.
 
 \begin{verbatim}
 export EDITOR=vim
 \end{verbatim}
+
+Set man page text width to 80 characters.
 
 \begin{verbatim}
 export MANWIDTH=80
@@ -240,45 +243,38 @@ alias mv='mv -i'
 alias cp='cp -i'
 \end{verbatim}
 
-\section{Git}
-
-\begin{verbatim}
-# color.decorate.tag
-[color "decorate"]
-	tag = magenta
-\end{verbatim}
-
-\section{Tmux}
-
-\begin{verbatim}
-	tmux.conf
-\end{verbatim}
-
-\section{Screen}
-
-\begin{verbatim}
-	screenrc
-\end{verbatim}
-
-
-
-\section{Bash}
-
-Configuration files:
-
-\begin{verbatim}
-${HOME}/.bashrc
-${HOME}/.bash_profile
-${HOME}/.profile
-/etc/bashrc
-/etc/profile
-\end{verbatim}
-
 \subsection{Readline}
+
+Configuration file:
 
 \begin{verbatim}
 inputrc
 \end{verbatim}
+
+Set incremental history search:
+\begin{verbatim}
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+\end{verbatim}
+
+\verb"\e[A" means \verb"Up", \verb"\e[B" means \verb"Down".  To find out other 
+bindings just run \verb"read" Bash command and press any key, e.g. Home:
+\begin{verbatim}
+$ read
+^[[1~
+\end{verbatim}
+
+Here \verb"^[" prefix means \verb"Escape", so the sequence for \verb"Home" must 
+be replaced with \verb'"\e[1~"' in inputrc file.
+
+\textbf{References}
+
+\begin{enumerate}
+\item unix.stackexchange.com: What is the general format of keyname for key 
+bindings in “inputrc” file?
+
+	https://unix.stackexchange.com/questions/24132/what-is-the-general-format-of-keyname-for-key-bindings-in-inputrc-file
+\end{enumerate}
 
 \subsection{Vim}
 
@@ -295,15 +291,25 @@ Fix random syntax highlighting breaks
 
 \subsection{Git}
 
+Configuration files:
+
+\begin{verbatim}
+.git/config
+
+$(HOME)/.git/config
+\end{verbatim}
+
+Change tags color in 'git log' and similar (yellow on white is a bit hardly 
+readable):
 \begin{verbatim}
 # color.decorate.tag
 [color "decorate"]
-	tag = magenta
+    tag = magenta
 
 [user]
-	name = E.V.Eremin
-	email = e.vl.eremin@yandex.ru
-	username = eremin
+    name = E.V.Eremin
+    email = e.vl.eremin@yandex.ru
+    username = eremin
 \end{verbatim}
 
 \subsubsection{Github (or similar)}
@@ -318,24 +324,50 @@ $ git remote add origin 'git@github.com:eremin-ev/cs-idx.git'
 
 \subsection{Tmux}
 
+Configuration file:
+
 \begin{verbatim}
-	tmux.conf
+tmux.conf
+\end{verbatim}
+
+Example:
+
+\begin{verbatim}
+set-option -g prefix C-a
+unbind-key C-b
+bind-key C-a send-prefix
+
+# Shift arrow to switch windows
+bind -n F11  previous-window
+bind -n F12 next-window
+
+# status bar
+set-option -g status-interval 60
+set-option -g status-left-length 30
+set-option -g status-style bg=green,bold,fg=white
+#set -g window-status-style bg=black
+set-option -g window-status-current-style bg=white,fg=black
+set-option -g window-status-current-format "[#I:#W#F]"
+#set -g window-status-current-fg black
+#set -g window-status-current-attr bold
+#set -g status-left '#[fg=green,bg=white](#S)'
+set-option -g status-right '#[default] #[fg=white]%H:%M#[default]'
 \end{verbatim}
 
 \subsection{Screen}
 
 \begin{verbatim}
-	screenrc
+screenrc
 \end{verbatim}
+
+\section{Conclusion}
+
+Write your conclusion here.
 
 \begin{equation}
     \label{simple_equation}
     \alpha = \sqrt{\beta}
 \end{equation}
-
-\section{Conclusion}
-
-Write your conclusion here.
 
 \end{document}
 
