@@ -1,4 +1,23 @@
-\documentclass{article}
+\documentclass[12pt,a4paper]{article}
+\usepackage{cmap}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian,english]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage[pdftex]{color,graphicx}
+\usepackage{float,indentfirst}
+\usepackage[format=hang,labelsep=endash]{caption}
+\usepackage[unicode,colorlinks,linkcolor=blue,
+        bookmarks,bookmarksnumbered]{hyperref}
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes,patterns}
+\tikzset{>=latex'}
+
+\usepackage{geometry}
+\geometry{left=3cm}
+\geometry{right=3cm}
+\geometry{top=2cm}
+\geometry{bottom=2cm}
 
 \begin{document}
 
@@ -15,13 +34,47 @@ Computer science topics index.
 
 What should be known.
 
+\section{People}
+
+List of people who asked right questions.
+
+\begin{itemize}
+\item Pythagoras of Samos (Пифагор) c.~570 – c.~495~BC
+\item Socrates
+\item Plato (Platon)
+\item Aristotle (Aristoteles)
+\item Euclid
+	\begin{itemize}
+	\item Elements
+	\end{itemize}
+\item Leonard Euler
+\item Лев Николаевич Толстой
+\item Claude E. Shannon
+	\begin{itemize}
+	\item A Symbolic Analysis of Relay and Switching Circuits, 1937.
+	\end{itemize}
+\item Edsger Wybe Dijkstra (E. W. Dijkstra)
+\item Donald Knuth
+	\begin{itemize}
+	\item The Art of Computer Programming, 1962, ...
+	\item \TeX
+	\item MIX, MMIX
+	\end{itemize}
+\item Robert Sedgewick
+\item Dennis Richie,
+\item Brian Kernigan
+\item Alfred Aho
+\end{itemize}
+
 \section{Hardware}
 
 \subsection{Central Processing Unit (CPU)}
 
-\subsection{Instruction Execution}
+\subsubsection{Co-processors, arithmetic accelerators}
 
-\subsection{Stack}
+\subsubsection{Instruction Execution}
+
+\subsubsection{Stack}
 
 \begin{itemize}
 \item Stack pointer
@@ -30,11 +83,9 @@ What should be known.
 \item Return Address
 \end{itemize}
 
-\subsubsection{Stack pointer}
+\subsubsection{Interrupt handling}
 
-\subsubsection{Frame pointer}
-
-\section{Multiprocessing}
+\subsection{Multiprocessing}
 
 \subsection{TLS}
 
@@ -54,6 +105,7 @@ What should be known.
 \item spinlock
 \item rwlock (Reader/Writer Lock)
 \item RCU
+\item Semaphores
 \end{itemize}
 
 \subsection{RCU (Read, Copy, Update)}
@@ -135,6 +187,18 @@ matches a page frame.
 \item PFN (Page Frame Number).  A PFN is simply an index within physical memory 
 that is counted in page-sized units. PFN for a physical address could be 
 trivially defined as (\verb"page_phys_addr >> PAGE_SHIFT").
+\end{itemize}
+
+\subsection{memcpy}
+
+\begin{itemize}
+\item memcpy
+
+	\begin{itemize}
+	\item Overlapped memory regions/blocks
+	\end{itemize}
+
+\item memmove
 \end{itemize}
 
 \textbf{References}
