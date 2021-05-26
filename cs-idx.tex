@@ -9,15 +9,17 @@
 \usepackage[format=hang,labelsep=endash]{caption}
 \usepackage[unicode,colorlinks,linkcolor=blue,
         bookmarks,bookmarksnumbered]{hyperref}
+\usepackage{tikzsymbols}
 \usepackage{tikz}
 \usetikzlibrary{arrows,shapes,patterns}
 \tikzset{>=latex'}
 
 \usepackage{geometry}
-\geometry{left=3cm}
-\geometry{right=3cm}
-\geometry{top=2cm}
-\geometry{bottom=2cm}
+  \geometry{left=3cm}
+  \geometry{right=3cm}
+  \geometry{top=2cm}
+  \geometry{bottom=2cm}
+\usepackage{xurl}
 
 \begin{document}
 
@@ -135,7 +137,7 @@ Paul McKenney series on LWN.net:
 
 \end{enumerate}
 
-\section{Tracing}
+\section{Tracing and Profiling}
 
 \begin{enumerate}
 \item Dynamic Tracing
@@ -147,7 +149,17 @@ mount -t tracefs tracefs /sys/kernel/tracing
 \item Perf
 \end{enumerate}
 
+\section{Debugging and Instrumenting}
+
+\subsection{GDB}
+
+\subsection{Valgrind}
+
 \section{Virtualization}
+
+\subsection{QEMU}
+
+\subsection{VirtualBox}
 
 \subsection{Namespaces}
 
@@ -244,9 +256,56 @@ trivially defined as (\verb"page_phys_addr >> PAGE_SHIFT").
 
 \section{Software Engineering}
 
+\subsection{Compatibility}
+
 \begin{enumerate}
 \item Backward compatibility
 \item Forward compatibility
+\end{enumerate}
+
+\subsection{Frameworks}
+
+\subsubsection{GLib}
+
+\subsubsection{GTK+}
+
+\subsubsection{Boost}
+
+\subsubsection{Qt}
+
+\textbf{References}
+
+\begin{enumerate}
+\item QThreads general usage
+
+	\url{https://wiki.qt.io/QThreads_general_usage}
+
+\item Maya Posch, How To Really, Truly Use QThreads; The Full
+      Explanation, November 1, 2011
+
+    Threads in an operating system are a very simple thing. Write a function, 
+    maybe bundle it with some data and push it onto a newly created thread.  
+    Use a mutex or other method to safely communicate with the thread if 
+    necessary.  Whether it are Win32, POSIX or other threads, they all 
+    basically work the same and are quite fool-proof. I’d venture to say that 
+    they’re at least a lot easier to use and handle than sockets \Smiley 
+    $\stackrel{..}{\smallsmile}$
+
+	\small
+    \url{https://mayaposch.wordpress.com/2011/11/01/how-to-really-truly-use-qthreads-the-full-explanation/}
+
+\item Integrating QML and C++
+
+	\url{https://doc.qt.io/qt-5/qtqml-cppintegration-topic.html}
+
+\item Interacting with QML Objects from C++
+
+	\url{https://doc.qt.io/qt-5/qtqml-cppintegration-interactqmlfromcpp.html}
+
+\item D-Pointer
+
+	\url{https://wiki.qt.io/D-Pointer}
+
 \end{enumerate}
 
 \section{Command Line Interface (CLI)}
@@ -491,4 +550,4 @@ Write your conclusion here.
 
 \end{document}
 
-% vim:spell:
+% vim:spell:fo+=aw:
