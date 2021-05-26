@@ -80,6 +80,7 @@ List of people who asked right questions.
 \item Stack pointer
 \item Frame pointer
 \item Subroutine/Subprogram
+\item Subprogram Argument Passing
 \item Return Address
 \end{itemize}
 
@@ -241,14 +242,69 @@ trivially defined as (\verb"page_phys_addr >> PAGE_SHIFT").
 
 \end{enumerate}
 
+\section{Software Engineering}
+
+\begin{enumerate}
+\item Backward compatibility
+\item Forward compatibility
+\end{enumerate}
+
 \section{Command Line Interface (CLI)}
 
 \subsection{Vim}
 
 Configuration files:
 
+\begin{itemize}
+\item \verb"$HOME/.vimrc"
+\end{itemize}
+
+\subsubsection{\$HOME/.vimrc}
+
 \begin{verbatim}
-.vimrc
+set keymap=russian-jcukenwin
+set iminsert=0
+set imsearch=0
+set spelllang=ru_yo,en_us
+
+set hlsearch
+set si
+set ic
+set fo=tcqro
+
+highlight lCursor guifg=NONE guibg=Cyan
+highlight clear SpellBad
+highlight SpellBad cterm=underline
+
+map <unique> <F2> a<C-R>=strftime("%Y.%m.%d-%H:%M:%S")<CR><CR><Esc>
+map <unique> <F10> :emenu Encoding.<TAB>
+map <unique> <F5> :w<CR>:make<CR>
+
+set wildmenu
+set wcm=<Tab>
+menu Encoding.KOI8-R :e ++enc=8bit-koi8-r<CR>
+menu Encoding.cp1251 :e ++enc=8bit-cp1251<CR>
+menu Encoding.ibm-866 :e ++enc=8bit-ibm866<CR>
+menu Encoding.UTF-8 :e ++enc=2byte-utf-8 <CR>
+
+" Only do this part when compiled with support for autocommands.
+if has("autocmd")
+  " When editing a file, always jump to the last known cursor position.
+  " Don't do it when the position is invalid or when inside an event handler
+  " (happens when dropping a file on gvim).
+  autocmd BufReadPost *
+    \ if line("'\"") >= 1 && line("'\"") <= line("$") |
+    \   exe "normal! g`\"" |
+    \ endif
+endif " has("autocmd")
+
+" vim highlight a matching parenthesis/brace
+hi MatchParen cterm=none ctermbg=green ctermfg=blue
+
+" syntax highlight and filetypes
+let myfiletypefile = "~/.vim/filetype.vim"
+filetype on
+syntax on
 \end{verbatim}
 
 \subsection{Bash}
@@ -263,7 +319,7 @@ ${HOME}/.profile
 /etc/profile
 \end{verbatim}
 
-\subsection{bashrc}
+\subsection{\$HOME/.bashrc}
 
 Ignore duplicated commands and those which begin with a space (\verb"ignoreboth"
 = \verb"gnorespace", \verb"ignoredups"), save more history.
