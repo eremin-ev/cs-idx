@@ -68,11 +68,9 @@ List of people who asked right questions.
 \item Alfred Aho
 \end{itemize}
 
-\section{Hardware/Software}
+\section{Hardware}
 
-\textbf{References}
-
-\begin{enumerate}
+\begin{itemize}
 \item Computer Organization and Design by David Patterson
 \item Operating Systems: Three Easy Pieces
 
@@ -94,29 +92,133 @@ List of people who asked right questions.
     \url{https://www.iecc.com/linker/}
     \url{https://linker.iecc.com/}
 
-\end{enumerate}
+\end{itemize}
+
+\textbf{References}
 
 \subsection{Central Processing Unit (CPU)}
 
-\subsubsection{Co-processors, arithmetic accelerators}
+\begin{itemize}
+\item Pipeline
+\item Branch Prediction
+\item Memory Hierarchy
+\end{itemize}
+
+\subsubsection{Co-processors, Arithmetic Accelerators, Math Units}
+
+\begin{itemize}
+\item MMX, SSE, AVX, Neon, etc.: SIMD-instructions
+\end{itemize}
 
 \subsubsection{Instruction Execution}
+
+\section{Virtual Memory and Memory Management}
+
+\subsection{Memory Segments}
+
+\subsection{MMU and Paging}
+
+\begin{itemize}
+\item PGD (Page Global Directory)
+\item PUD (Page Upper Directory)
+\item PMD (Page Middle (Mid-level) Directory)
+\item PTE (Page Table Entry)
+\item Page
+\end{itemize}
+
+\begin{itemize}
+\item PAE (Physical Address Extension)
+\item Page Frame.  Physical memory is organized into \emph{page frames}.  The 
+size of a page frame is a power of 2 in bytes and varies among systems.
+\item Page.  Logical memory is organized into \emph{pages}. The size of page 
+matches a page frame.
+\item PFN (Page Frame Number).  A PFN is simply an index within physical memory 
+that is counted in page-sized units. PFN for a physical address could be 
+trivially defined as (\verb"page_phys_addr >> PAGE_SHIFT").
+\end{itemize}
+
+\begin{enumerate}
+\item Four-level page tables merged [Posted January 5, 2005 by corbet]
+
+    \url{https://lwn.net/Articles/117749/}
+
+\item Mel Gorman (mel at skynet dot ie).  Understanding the Linux Virtual Memory Manager
+
+    \url{https://www.kernel.org/doc/gorman/}
+\end{enumerate}
 
 \subsubsection{Stack}
 
 \begin{itemize}
 \item Stack pointer
 \item Frame pointer
-\item Subroutine/Subprogram
-\item Subprogram Argument Passing
-\item Return Address
+\item Jump/Branch and Return Instructions
 \end{itemize}
 
-\subsubsection{Interrupt handling}
+\subsubsection{Interrupts and Interrupt Handling}
+
+\subsection{CPU Cache}
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=1\textwidth]{png/cache-direct.png}
+\caption{CPU Cache Direct Mapping}\label{fig.cache-direct-mapping}
+\end{center}
+\end{figure}
+
+\begin{itemize}
+\item Direct Mapping
+\item Associative Mapping
+\item Set-Associative Mapping
+
+    \begin{itemize}
+    \item One-way associative
+    \item N-way associative
+    \end{itemize}
+
+\item Cache Coherence
+\end{itemize}
+
+\textbf{References}
+
+\subsection{Page-replacement algorithm}
+
+\begin{enumerate}
+\item Least Recently Used (LRU)
+\end{enumerate}
+
+\subsection{References}
+
+\begin{enumerate}
+\item CSE 240A: Graduate Computer Architecture
+
+	\begin{enumerate}
+    \item Cache (CSE240A-MBT-L15-Cache.ppt.pdf)
+
+        \url{https://cseweb.ucsd.edu/classes/fa10/cse240a/pdf/08/}
+
+    \item Virtual Memory (CSE240A-MBT-L18-VirtualMemory.ppt.pdf)
+
+        \url{https://cseweb.ucsd.edu/classes/fa10/cse240a/pdf/08/}
+
+    \end{enumerate}
+
+\item CSE378: Machine Organization \& Assembly Language
+
+    \begin{itemize}
+    \item How do caches work?
+
+        \url{https://courses.cs.washington.edu/courses/cse378/09wi/lectures/lec15.pdf}
+
+    \end{itemize}
+
+\end{enumerate}
 
 \subsection{Multiprocessing}
 
 \subsection{TLS}
+
+\section{Software}
 
 \subsection{Shared Libraries/Object}
 
@@ -142,6 +244,9 @@ loaded}\label{fig.execve-ld.so}
 \subsection{Subprograms/Routines/Functions}
 
 \begin{itemize}
+\item Subroutine/Subprogram
+\item Subroutine Argument Passing
+\item Return Address
 \item Static
 \item Thread-safe
 \item Re-entrant
@@ -179,22 +284,21 @@ RCU --- Read, Copy, Update.
 Paul McKenney series on LWN.net:
 
 \begin{enumerate}
-
 \item What is RCU, Fundamentally?
 
-	\texttt{https://lwn.net/Articles/262464/}
+    \url{https://lwn.net/Articles/262464/}
 
 \item What is RCU? Part 2: Usage
 
-	\texttt{https://lwn.net/Articles/263130/}
+    \url{https://lwn.net/Articles/263130/}
 
 \item RCU part 3: the RCU API
 
-	\texttt{https://lwn.net/Articles/264090/}
+    \url{https://lwn.net/Articles/264090/}
 
 \item The RCU API, 2019 edition
 
-	\texttt{https://lwn.net/Articles/777036/}
+    \url{https://lwn.net/Articles/777036/}
 
 \end{enumerate}
 
@@ -225,10 +329,10 @@ mount -t tracefs tracefs /sys/kernel/tracing
 \subsection{Namespaces}
 
 \begin{enumerate}
+\item Separation Anxiety: A Tutorial for Isolating Your
+      System with Linux Namespaces
 
-\item Separation Anxiety: A Tutorial for Isolating Your System with Linux Namespaces
-
-	\texttt{https://www.toptal.com/linux/separation-anxiety-isolating-your-system-with-linux-namespaces}
+    \url{https://www.toptal.com/linux/separation-anxiety-isolating-your-system-with-linux-namespaces}
 
 \end{enumerate}
 
@@ -238,32 +342,7 @@ mount -t tracefs tracefs /sys/kernel/tracing
 
 \subsection{Docker}
 
-\section{Memory Management}
-
-\subsection{Segments}
-
-\subsection{Paging}
-
-\begin{itemize}
-\item PGD (Page Global Directory)
-\item PUD (Page Upper Directory)
-\item PMD (Page Middle (Mid-level) Directory)
-\item PTE (Page Table Entry)
-\item Page
-\end{itemize}
-
-\begin{itemize}
-\item PAE (Physical Address Extension)
-\item Page Frame.  Physical memory is organized into \emph{page frames}.  The 
-size of a page frame is a power of 2 in bytes and varies among systems.
-\item Page.  Logical memory is organized into \emph{pages}. The size of page 
-matches a page frame.
-\item PFN (Page Frame Number).  A PFN is simply an index within physical memory 
-that is counted in page-sized units. PFN for a physical address could be 
-trivially defined as (\verb"page_phys_addr >> PAGE_SHIFT").
-\end{itemize}
-
-\subsection{memcpy}
+\section{memcpy}
 
 \begin{itemize}
 \item memcpy
@@ -276,54 +355,6 @@ trivially defined as (\verb"page_phys_addr >> PAGE_SHIFT").
 \end{itemize}
 
 \textbf{References}
-
-\begin{enumerate}
-\item Four-level page tables merged [Posted January 5, 2005 by corbet]
-
-	\texttt{https://lwn.net/Articles/117749/}
-
-\item Mel Gorman (mel at skynet dot ie).  Understanding the Linux Virtual Memory Manager
-
-	\texttt{https://www.kernel.org/doc/gorman/}
-\end{enumerate}
-
-\subsection{Caching}
-
-\textbf{References}
-
-\begin{enumerate}
-\item One-way associative
-\item N-way associative
-\item Coherence
-\end{enumerate}
-
-\subsection{Page-replacement algorithm}
-
-\begin{enumerate}
-
-\item Least Recently Used (LRU)
-
-\end{enumerate}
-
-\subsection{References}
-
-\begin{enumerate}
-
-\item CSE 240A: Graduate Computer Architecture
-
-	\begin{enumerate}
-
-	\item Cache (CSE240A-MBT-L15-Cache.ppt.pdf)
-
-	\texttt{https://cseweb.ucsd.edu/classes/fa10/cse240a/pdf/08/}
-
-	\item Virtual Memory (CSE240A-MBT-L18-VirtualMemory.ppt.pdf)
-
-	\texttt{https://cseweb.ucsd.edu/classes/fa10/cse240a/pdf/08/}
-
-	\end{enumerate}
-
-\end{enumerate}
 
 \section{Software Engineering}
 
